@@ -1,11 +1,8 @@
 package com.fx.calc.models.dto;
 
-
-import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -14,7 +11,6 @@ import java.time.LocalDate;
  *
  * @author efe ariaroo
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CalculateInvoiceDto {
     private static final long serialVersionUID = 1L;
 
@@ -34,10 +30,11 @@ public class CalculateInvoiceDto {
         this.date = date;
     }
 
-    @NotNull(message = "USD amount id is a required field")
-    private BigDecimal usdAmount;
+    @NotNull(message = "USD Amount is a required field")
+    @Digits(integer = 20, fraction = 2, message = "USD Amount: max number of decimal digits is 2")
+    @DecimalMin(value = "0.00", message = "USD Aamount: minimum value for this field is 0.00")
+    private BigDecimal usdAmount = BigDecimal.ZERO;
 
-    @NotNull(message = "Date is a required field")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 }

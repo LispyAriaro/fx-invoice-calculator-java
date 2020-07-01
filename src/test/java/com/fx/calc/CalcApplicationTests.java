@@ -31,7 +31,7 @@ import java.time.LocalDate;
 public class CalcApplicationTests {
 	@Autowired
 	private MockMvc mvc;
-	
+
 	@Test
 	public void validUsdAmountAndDate_ShouldSuceed() throws Exception {
 		// We need this to ensure that LocalDate is serialized by jackson to the yyyy-MM-DD format

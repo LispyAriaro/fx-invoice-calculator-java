@@ -36,9 +36,8 @@ public class CalculatorRestController {
 
     @PostMapping("/api/v1/calculator/invoice")
     public ResponseEntity<ResponseDto> handleCalculateInvoice(@Valid @RequestBody CalculateInvoiceDto calculateInvoiceDto, BindingResult bindingResult) throws NotFoundException, InvalidDataFormatException, Exception {
-        RestUtil.validate(bindingResult);
         if(calculateInvoiceDto.getDate().isBefore(LocalDate.now().minusDays(90).withDayOfMonth(1))) {
-            throw new InvalidDataFormatException("Selected date is earlier than 3 months ago");
+            throw new InvalidDataFormatException("Selected date should be within 90 days ago");
         }
 
         FxCalculationResult result = calculatorService.calculate(calculateInvoiceDto);
