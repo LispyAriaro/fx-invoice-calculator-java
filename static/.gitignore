@@ -1,0 +1,17 @@
+node_modules/
+logs/
+dist/
+.env
+
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
+/package-lock.json
+
+calc.iml
+HELP.md
+mvnw
+mvnw.cmd
+.idea/
+

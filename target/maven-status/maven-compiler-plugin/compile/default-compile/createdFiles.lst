@@ -1,0 +1,17 @@
+com/fx/calc/models/dto/CurrencyLayerResponseDto.class
+com/fx/calc/config/GeneralConfig.class
+com/fx/calc/models/FxCalculationResult.class
+com/fx/calc/controllers/GeneralControllerAdvice.class
+com/fx/calc/services/impl/CalculatorServiceImpl.class
+com/fx/calc/exceptions/BaseException.class
+com/fx/calc/models/dto/CurrencyLayerResponseDto$Quotes.class
+com/fx/calc/exceptions/NotFoundException.class
+com/fx/calc/rest/CalculatorRestController.class
+com/fx/calc/models/dto/ResponseDto$Status.class
+com/fx/calc/services/CalculatorService.class
+com/fx/calc/models/dto/ResponseDto$ResponseError.class
+com/fx/calc/exceptions/InvalidDataFormatException.class
+com/fx/calc/models/dto/ResponseDto.class
+com/fx/calc/CalcApplication.class
+com/fx/calc/rest/RestUtil.class
+com/fx/calc/models/dto/CalculateInvoiceDto.class
