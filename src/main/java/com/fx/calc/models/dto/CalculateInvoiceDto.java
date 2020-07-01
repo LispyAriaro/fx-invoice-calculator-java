@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 /**
  * @author efe ariaroo
@@ -23,11 +24,11 @@ public class CalculateInvoiceDto {
         this.usdAmount = usdAmount;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -35,6 +36,6 @@ public class CalculateInvoiceDto {
     private BigDecimal usdAmount;
 
     @NotBlank(message = "Date is a required field")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private String date;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate date;
 }

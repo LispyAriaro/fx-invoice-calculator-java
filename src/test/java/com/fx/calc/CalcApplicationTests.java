@@ -23,6 +23,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 
 @RunWith(SpringRunner.class)
@@ -40,10 +41,9 @@ public class CalcApplicationTests {
 	public void testCalculateInvoice() throws Exception {
 		CalculateInvoiceDto payload = new CalculateInvoiceDto();
 		payload.setUsdAmount(BigDecimal.valueOf(5));
-		payload.setDate("2020-05-21");
+		payload.setDate(LocalDate.now().minusDays(30).withDayOfMonth(1));
 
 		mvc.perform(MockMvcRequestBuilders.post("/api/v1/calculator/invoice", payload).accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andExpect(content().string(equalTo("Greetings from Spring Boot!")));
+				.andExpect(status().isOk());
 	}
 }

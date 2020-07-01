@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 
 /**
  * @author efe ariaroo
@@ -34,6 +35,9 @@ public class CalculatorRestController {
     @PostMapping("/api/v1/calculator/invoice")
     public ResponseEntity<ResponseDto> handleCalculateInvoice(@Valid @RequestBody CalculateInvoiceDto calculateInvoiceDto, BindingResult fields) throws NotFoundException, InvalidDataFormatException, Exception {
         RestUtil.validate(fields);
+        if(calculateInvoiceDto.getDate().isBefore(LocalDate.now().minusDays(90).withDayOfMonth(1))) {
+            throw new InvalidDataFormatException("Selected date is earlier than 3 months ago");
+        }
 
         FxCalculationResult result = calculatorService.calculate(calculateInvoiceDto);
 
