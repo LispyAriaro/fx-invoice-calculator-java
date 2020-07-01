@@ -37,7 +37,7 @@ public class CalculateInvoiceDto {
     @NotNull(message = "USD amount id is a required field")
     private BigDecimal usdAmount;
 
-    @NotBlank(message = "Date is a required field")
+    @NotNull(message = "Date is a required field")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 }

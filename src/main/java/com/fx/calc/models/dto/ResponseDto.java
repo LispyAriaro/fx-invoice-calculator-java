@@ -1,8 +1,6 @@
 package com.fx.calc.models.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,12 +15,7 @@ public class ResponseDto implements Serializable {
 
     private Boolean status;
     private String message;
-
-    @JsonProperty("error_id")
-    private String errorId;
-
     private Serializable data;
-    private String code;
 
     List<ResponseError> errors;
 
@@ -30,45 +23,19 @@ public class ResponseDto implements Serializable {
     }
 
     public ResponseDto(Boolean status, String message) {
-        this(status, message, null);
-    }
-
-    public ResponseDto(Boolean status, String message, String errorId) {
         this.status = status;
         this.message = message;
-        this.errorId = errorId;
     }
 
     public ResponseDto(Boolean status, String message, Serializable data) {
-        this(status, message, null, data);
-    }
-
-    public ResponseDto(Boolean status, String message, String errorId, Serializable data) {
         this.status = status;
         this.message = message;
-        this.errorId = errorId;
         this.data = data;
     }
 
-    public ResponseDto(Boolean status, String message, Serializable data, String code) {
-        this(status, message, null, data, code);
-    }
-
-    public ResponseDto(Boolean status, String message, String errorId, Serializable data, String code, List<ResponseError> errors) {
-        this.status = status;
-        this.message = message;
-        this.errorId = errorId;
-        this.data = data;
-        this.code = code;
+    public ResponseDto(Boolean status, String message, Serializable data, List<ResponseError> errors) {
+        this(status, message);
         this.errors = errors;
-    }
-
-    public ResponseDto(Boolean status, String message, String errorId, Serializable data, String code) {
-        this.status = status;
-        this.message = message;
-        this.errorId = errorId;
-        this.data = data;
-        this.code = code;
     }
 
     public Boolean getStatus() {
@@ -89,15 +56,6 @@ public class ResponseDto implements Serializable {
         return this;
     }
 
-    public String getErrorId() {
-        return errorId;
-    }
-
-    public ResponseDto setErrorId(String errorId) {
-        this.errorId = errorId;
-        return this;
-    }
-
     public Serializable getData() {
         return data;
     }
@@ -107,19 +65,9 @@ public class ResponseDto implements Serializable {
         return this;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public ResponseDto setCode(String code) {
-        this.code = code;
-        return this;
-    }
-
     @Override
     public String toString() {
-        return "ResponseDto{" + "status=" + status + ", message=" + message + ", errorId=" + errorId + ", data=" + data
-               + ", code=" + code + '}';
+        return "ResponseDto{" + "status=" + status + ", message=" + message + ", data=" + data + '}';
     }
 
     public static class ResponseError {

@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,6 +26,7 @@ import java.time.LocalDate;
 @RequestMapping(
         produces = MediaType.APPLICATION_JSON_VALUE
 )
+@Validated
 public class CalculatorRestController {
     private static final Logger log = LoggerFactory.getLogger(CalculatorRestController.class);
 
@@ -33,8 +35,8 @@ public class CalculatorRestController {
 
 
     @PostMapping("/api/v1/calculator/invoice")
-    public ResponseEntity<ResponseDto> handleCalculateInvoice(@Valid @RequestBody CalculateInvoiceDto calculateInvoiceDto, BindingResult fields) throws NotFoundException, InvalidDataFormatException, Exception {
-        RestUtil.validate(fields);
+    public ResponseEntity<ResponseDto> handleCalculateInvoice(@Valid @RequestBody CalculateInvoiceDto calculateInvoiceDto, BindingResult bindingResult) throws NotFoundException, InvalidDataFormatException, Exception {
+        RestUtil.validate(bindingResult);
         if(calculateInvoiceDto.getDate().isBefore(LocalDate.now().minusDays(90).withDayOfMonth(1))) {
             throw new InvalidDataFormatException("Selected date is earlier than 3 months ago");
         }

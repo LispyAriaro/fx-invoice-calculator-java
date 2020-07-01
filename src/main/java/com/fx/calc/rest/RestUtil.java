@@ -17,12 +17,12 @@ public class RestUtil {
     /**
      * Performs validation.
      *
-     * @param fields the binding result holding the fields
+     * @param bindingResult the binding result holding the fields
      * @throws InvalidDataFormatException if one or more field fails the validation test
      */
-    static void validate(BindingResult fields) throws Exception {
-        if (fields.hasErrors()) {
-            final FieldError fieldError = fields.getFieldError();
+    static void validate(BindingResult bindingResult) throws Exception {
+        if (bindingResult.hasErrors()) {
+            final FieldError fieldError = bindingResult.getFieldError();
             if (fieldError != null) {
                 throw new InvalidDataFormatException(fieldError.getDefaultMessage());
             }
@@ -34,6 +34,6 @@ public class RestUtil {
     }
 
     private static ResponseEntity<ResponseDto> response(HttpStatus httpStatus, Boolean status, String message, Object data, String code) {
-        return ResponseEntity.status(httpStatus).body(new ResponseDto(status, message, (Serializable) data, code));
+        return ResponseEntity.status(httpStatus).body(new ResponseDto(status, message, (Serializable) data));
     }
 }
