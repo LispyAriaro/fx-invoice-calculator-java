@@ -1,6 +1,5 @@
 package com.fx.calc.services.impl;
 
-import com.fx.calc.exceptions.InvalidDataFormatException;
 import com.fx.calc.exceptions.NotFoundException;
 import com.fx.calc.models.FxCalculationResult;
 import com.fx.calc.models.dto.CalculateInvoiceDto;
@@ -10,16 +9,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 @Service

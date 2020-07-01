@@ -41,6 +41,6 @@ public class CalculatorRestController {
 
         FxCalculationResult result = calculatorService.calculate(calculateInvoiceDto);
 
-        return RestUtil.response(HttpStatus.OK, ResponseDto.Status.success, "", result);
+        return RestUtil.response(HttpStatus.OK, Boolean.TRUE, "", result);
     }
 }

@@ -7,13 +7,15 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * This represents the structure of the json payload that will be sent back in the HTTP response
+ *
  * @author efe ariaroo
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Status status;
+    private Boolean status;
     private String message;
 
     @JsonProperty("error_id")
@@ -27,32 +29,32 @@ public class ResponseDto implements Serializable {
     public ResponseDto() {
     }
 
-    public ResponseDto(Status status, String message) {
+    public ResponseDto(Boolean status, String message) {
         this(status, message, null);
     }
 
-    public ResponseDto(Status status, String message, String errorId) {
+    public ResponseDto(Boolean status, String message, String errorId) {
         this.status = status;
         this.message = message;
         this.errorId = errorId;
     }
 
-    public ResponseDto(Status status, String message, Serializable data) {
+    public ResponseDto(Boolean status, String message, Serializable data) {
         this(status, message, null, data);
     }
 
-    public ResponseDto(Status status, String message, String errorId, Serializable data) {
+    public ResponseDto(Boolean status, String message, String errorId, Serializable data) {
         this.status = status;
         this.message = message;
         this.errorId = errorId;
         this.data = data;
     }
 
-    public ResponseDto(Status status, String message, Serializable data, String code) {
+    public ResponseDto(Boolean status, String message, Serializable data, String code) {
         this(status, message, null, data, code);
     }
 
-    public ResponseDto(Status status, String message, String errorId, Serializable data, String code, List<ResponseError> errors) {
+    public ResponseDto(Boolean status, String message, String errorId, Serializable data, String code, List<ResponseError> errors) {
         this.status = status;
         this.message = message;
         this.errorId = errorId;
@@ -61,7 +63,7 @@ public class ResponseDto implements Serializable {
         this.errors = errors;
     }
 
-    public ResponseDto(Status status, String message, String errorId, Serializable data, String code) {
+    public ResponseDto(Boolean status, String message, String errorId, Serializable data, String code) {
         this.status = status;
         this.message = message;
         this.errorId = errorId;
@@ -69,11 +71,11 @@ public class ResponseDto implements Serializable {
         this.code = code;
     }
 
-    public Status getStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public ResponseDto setStatus(Status status) {
+    public ResponseDto setStatus(Boolean status) {
         this.status = status;
         return this;
     }
@@ -118,12 +120,6 @@ public class ResponseDto implements Serializable {
     public String toString() {
         return "ResponseDto{" + "status=" + status + ", message=" + message + ", errorId=" + errorId + ", data=" + data
                + ", code=" + code + '}';
-    }
-
-    public enum Status {
-        success,
-        fail,
-        error;
     }
 
     public static class ResponseError {

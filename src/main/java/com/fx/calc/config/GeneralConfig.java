@@ -5,6 +5,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.client.RestTemplate;
 
+
+/**
+ * This helps us make external API requests
+ *
+ * @author efe ariaroo
+ */
 @Configuration
 public class GeneralConfig {
     @Bean

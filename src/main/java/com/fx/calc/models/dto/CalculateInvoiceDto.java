@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
+ * This represents the structure of the json payload that will be sent in the HTTP request
+ *
  * @author efe ariaroo
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)

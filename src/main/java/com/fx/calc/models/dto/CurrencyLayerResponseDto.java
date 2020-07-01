@@ -4,6 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 
+
+/**
+ * This represents the structure of the json payload that will be sent back from Currency Layer
+ *
+ * @author efe ariaroo
+ */
 public class CurrencyLayerResponseDto {
     private boolean success;
     private Quotes quotes;

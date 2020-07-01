@@ -29,11 +29,11 @@ public class RestUtil {
         }
     }
 
-    public static ResponseEntity<ResponseDto> response(HttpStatus httpStatus, ResponseDto.Status status, String message, Object data) {
+    public static ResponseEntity<ResponseDto> response(HttpStatus httpStatus, Boolean status, String message, Object data) {
         return response(httpStatus, status, message, data, null);
     }
 
-    private static ResponseEntity<ResponseDto> response(HttpStatus httpStatus, ResponseDto.Status status, String message, Object data, String code) {
+    private static ResponseEntity<ResponseDto> response(HttpStatus httpStatus, Boolean status, String message, Object data, String code) {
         return ResponseEntity.status(httpStatus).body(new ResponseDto(status, message, (Serializable) data, code));
     }
 }
