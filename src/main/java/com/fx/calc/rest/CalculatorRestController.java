@@ -36,6 +36,9 @@ public class CalculatorRestController {
 
     @PostMapping("/api/v1/calculator/invoice")
     public ResponseEntity<ResponseDto> handleCalculateInvoice(@Valid @RequestBody CalculateInvoiceDto calculateInvoiceDto, BindingResult bindingResult) throws NotFoundException, InvalidDataFormatException, Exception {
+        if(calculateInvoiceDto.getUsdAmount() == null) {
+            throw new InvalidDataFormatException("USD amount is required");
+        }
         if(calculateInvoiceDto.getDate().isBefore(LocalDate.now().minusDays(90).withDayOfMonth(1))) {
             throw new InvalidDataFormatException("Selected date should be within 90 days ago");
         }
